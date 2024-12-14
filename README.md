@@ -37,7 +37,7 @@ slint-build = "1.8.0"
 winresource = "0.1.19"
 ```
 
-# How to Run
+## How to Run
 
 1.Clone the repository:
 
