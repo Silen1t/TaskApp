@@ -37,7 +37,7 @@ slint = "1.8.0"
 1.Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Silen1t/TaskApp
 ```
 
 2.Navigate to the project directory:
@@ -55,7 +55,6 @@ cargo build
 cargo run
 ```
 
-## Screenshots
 
 ## Screenshots
 
