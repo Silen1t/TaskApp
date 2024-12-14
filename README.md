@@ -1,38 +1,77 @@
-# Slint Rust Template
+# Task App
 
-A template for a Rust application that's using [Slint](https://slint.rs/) for the user interface.
+A simple task management application that allows users to:
 
-## About
+- Add tasks
+- Mark tasks as done
+- Remove tasks
 
-This template helps you get started developing a Rust application with Slint as toolkit
-for the user interface. It demonstrates the integration between the `.slint` UI markup and
-Rust code, how to react to callbacks, get and set properties, and use basic widgets.
+This application is built with Rust for the backend and Slint for the frontend.
 
-## Usage
+## Features
 
-1. Install Rust by following its [getting-started guide](https://www.rust-lang.org/learn/get-started).
-   Once this is done, you should have the `rustc` compiler and the `cargo` build system installed in your `PATH`.
-2. Download and extract the [ZIP archive of this repository](https://github.com/slint-ui/slint-rust-template/archive/refs/heads/main.zip).
-3. Rename the extracted directory and change into it:
-    ```
-    mv slint-rust-template-main my-project
-    cd my-project    
-    ```
-4. Build with `cargo`:
-    ```
-    cargo build
-    ```
-5. Run the application binary:
-    ```
-    cargo run
-    ```
+- **Add Tasks**: Easily add new tasks to your list.
+- **Mark as Done**: Check off tasks that have been completed.
+- **Remove Tasks**: Remove tasks that are no longer needed.
 
-We recommend using an IDE for development, along with our [LSP-based IDE integration for `.slint` files](https://github.com/slint-ui/slint/blob/master/tools/lsp/README.md). You can also load this project directly in [Visual Studio Code](https://code.visualstudio.com) and install our [Slint extension](https://marketplace.visualstudio.com/items?itemName=Slint.slint).
+## Technologies Used
 
-## Next Steps
+- **Backend**: Rust
+- **Frontend**: Slint
 
-We hope that this template helps you get started, and that you enjoy exploring making user interfaces with Slint. To learn more
-about the Slint APIs and the `.slint` markup language, check out our [online documentation](https://slint.dev/docs).
+## Dependencies
 
-Don't forget to edit this readme to replace it by yours, and edit the `name =` field in `Cargo.toml` to match the name of your
-project.
+This project uses the following dependencies:
+
+```toml
+[dependencies]
+dirs = "5.0.1"
+rand = "0.8.5"
+serde = {version = "1.0.216", features = ["derive"] }
+serde_json = "1.0.133"
+slint = "1.8.0"
+```
+
+# How to Run
+
+1.Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+2.Navigate to the project directory:
+
+```bash
+cd TaskApp
+```
+
+3.Build the project:
+```bash
+cargo build
+```
+4.Run the application:
+```bash
+cargo run
+```
+
+## Screenshots
+
+## Screenshots
+
+### Task Management Interface
+This screenshot shows the task app interface with multiple tasks:
+- **Task 1**: Undone (newly added)
+- **Task 2**: Done (marked as completed)
+
+![Task Management Interface](interface_screenshot.png)
+
+
+
+## Contributing
+
+This project is currently maintained by a single developer and is not open for external contributions. However, feel free to explore the code, use it for learning, and share feedback or suggestions by opening an issue.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
