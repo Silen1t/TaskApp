@@ -1,0 +1,122 @@
+import { Button, VerticalBox, LineEdit, HorizontalBox, CheckBox, ScrollView, StandardButton } from "std-widgets.slint";
+
+
+export struct Task {
+    text:string,
+    check:bool,
+    id:float}
+
+enum TaskType{
+    All,
+    InProgress,
+    Done
+}
+
+component TaskCard {
+    in-out property <string> text;
+    in-out property <bool> check;
+    in-out property <Task> task;
+    callback on-remove(Task);
+    callback on-check(Task);
+    Rectangle {
+        height: 50px;
+        background: #1f1f1f;
+        HorizontalBox {
+            spacing: 25px;
+            alignment: start;
+
+            CheckBox {
+                checked: check;
+                toggled => {
+                    check = !check;
+                    task.check = check;
+                    on-check(task);
+                }
+            }
+
+            Text {
+                font-size: 14px;
+                font-weight: 900;
+                vertical-alignment: center;
+                text: text;
+            }
+
+            Button {
+                text: "Remove";
+                clicked => {
+                    on-remove(task)
+                }
+            }
+        }
+    }
+}
+
+export component AppWindow inherits Window {
+
+    in-out property <[Task]> tasks;
+    callback add-task(string, [Task]);
+    callback task_accepted();
+    callback remove-task(Task, [Task]);
+    callback check-task(Task, [Task]);
+
+    title: "Task App";
+    icon: @image-url("assets/images/TaskAppIcon.jpeg");
+    max-height: 1280px;
+    max-width: 720px;
+    background: #1e1f22;
+
+    VerticalLayout {
+        padding: 50px;
+        spacing: 25px;
+        Text {
+            text: "Task App";
+            font-size: 40px;
+            font-weight: 800;
+            horizontal-alignment: center;
+        }
+
+        HorizontalLayout {
+            spacing: 25px;
+            padding: 5px;
+            taskinput := LineEdit {
+                placeholder-text: "Task";
+                padding: 10px;
+                accepted => {
+                    add-task(taskinput.text, tasks);
+                    taskinput.text = "";
+                }
+            }
+
+            addtask-button := Button {
+                text: "Add Task";
+                clicked => {
+                    add-task(taskinput.text, tasks);
+                    taskinput.text = "";
+                }
+            }
+        }
+
+        Rectangle {
+            padding: 10px;
+            min-height: 100px;
+            min-width: 200px;
+            background: #181818;
+            ScrollView {
+                VerticalBox {
+                    spacing: 10px;
+                    for task in tasks: TaskCard {
+                        text: task.text;
+                        check: task.check;
+                        task: task;
+                        on-remove(task) => {
+                            remove-task(task, tasks);
+                        }
+                        on-check(task) => {
+                            check-task(task, tasks);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
