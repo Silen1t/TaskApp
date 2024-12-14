@@ -73,4 +73,4 @@ This project is currently maintained by a single developer and is not open for e
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the CC0 1.0 License. See the LICENSE file for details.
