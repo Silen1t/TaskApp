@@ -30,6 +30,11 @@ rand = "0.8.5"
 serde = {version = "1.0.216", features = ["derive"] }
 serde_json = "1.0.133"
 slint = "1.8.0"
+ 
+
+[build-dependencies]
+slint-build = "1.8.0"
+winresource = "0.1.19"
 ```
 
 # How to Run
@@ -55,7 +60,22 @@ cargo build
 cargo run
 ```
 
+## Testing the Executable
 
+To test the compiled executable application:
+
+1.Build the project in release mode:
+``` bush
+cargo build --release
+```
+2.Navigate to the target/release directory:
+```bush
+cd target/release
+```
+3.Run the executable file:
+```bush
+TaskApp.exe
+```
 ## Screenshots
 
 ### Task Management Interface
